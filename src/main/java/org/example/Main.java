@@ -8,9 +8,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a slot number (1-9): ");
-        int slot = scanner.nextInt();
-
-        return slot;
+        return scanner.nextInt();
     }
 
     // UC4 - Convert Slot Number to Row and Column
@@ -21,9 +19,25 @@ public class Main {
         return new int[]{row, column};
     }
 
+    // UC5 - Validate User Move
+    public static boolean isValidMove(char[][] board, int row, int column) {
+
+        // Check boundaries
+        if (row < 0 || row > 2 || column < 0 || column > 2) {
+            return false;
+        }
+
+        // Check if the cell is empty
+        if (board[row][column] != '-') {
+            return false;
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
 
-        // UC1 - Create and Initialize Board
+        // UC1 - Create Board
         char[][] board = new char[3][3];
 
         for (int i = 0; i < 3; i++) {
@@ -42,7 +56,7 @@ public class Main {
             System.out.println();
         }
 
-        // UC2 - Toss to Decide First Player
+        // UC2 - Toss
         Random random = new Random();
         int toss = random.nextInt(2);
 
@@ -65,13 +79,22 @@ public class Main {
         System.out.println("Player 1 Symbol: " + player1Symbol);
         System.out.println("Player 2 Symbol: " + player2Symbol);
 
-        // UC3 - Read User Slot
+        // UC3
         int slot = getUserSlot();
 
-        // UC4 - Convert Slot to Row and Column
+        // UC4
         int[] position = getRowColumn(slot);
+        int row = position[0];
+        int column = position[1];
 
-        System.out.println("Row = " + position[0]);
-        System.out.println("Column = " + position[1]);
+        System.out.println("Row = " + row);
+        System.out.println("Column = " + column);
+
+        // UC5
+        if (isValidMove(board, row, column)) {
+            System.out.println("Valid Move");
+        } else {
+            System.out.println("Invalid Move");
+        }
     }
 }
