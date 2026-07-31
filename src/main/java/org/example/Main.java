@@ -1,10 +1,21 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 
+    // UC3 Method
+    public static int getUserSlot() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a slot number (1-9): ");
+        int slot = scanner.nextInt();
+
+        return slot;
+    }
+
     public static void main(String[] args) {
 
-        // UC1 : Create Board
+        // UC1: Create Board
         char[][] board = new char[3][3];
 
         for (int i = 0; i < 3; i++) {
@@ -23,11 +34,9 @@ public class Main {
             System.out.println();
         }
 
-        // ---------------- UC2 ----------------
-
+        // UC2: Toss
         Random random = new Random();
 
-        // Toss (0 or 1)
         int toss = random.nextInt(2);
 
         String currentPlayer;
@@ -44,10 +53,13 @@ public class Main {
             player2Symbol = 'X';
         }
 
-        System.out.println("\nToss Result");
-        System.out.println(currentPlayer + " starts first.");
+        System.out.println("\n" + currentPlayer + " starts first.");
+        System.out.println("Player 1 Symbol: " + player1Symbol);
+        System.out.println("Player 2 Symbol: " + player2Symbol);
 
-        System.out.println("Player 1 Symbol : " + player1Symbol);
-        System.out.println("Player 2 Symbol : " + player2Symbol);
+        // UC3
+        int slot = getUserSlot();
+
+        System.out.println("You selected slot: " + slot);
     }
 }
