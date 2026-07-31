@@ -1,20 +1,19 @@
-package org.example;
+import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        // Step 1: Create a 3x3 board
+        // UC1 : Create Board
         char[][] board = new char[3][3];
 
-        // Step 2: Initialize every cell with '-'
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 board[i][j] = '-';
             }
         }
 
-        // Step 3: Print the board
+        // Print Board
         System.out.println("Tic-Tac-Toe Board:");
 
         for (int i = 0; i < 3; i++) {
@@ -23,5 +22,32 @@ public class Main {
             }
             System.out.println();
         }
+
+        // ---------------- UC2 ----------------
+
+        Random random = new Random();
+
+        // Toss (0 or 1)
+        int toss = random.nextInt(2);
+
+        String currentPlayer;
+        char player1Symbol;
+        char player2Symbol;
+
+        if (toss == 0) {
+            currentPlayer = "Player 1";
+            player1Symbol = 'X';
+            player2Symbol = 'O';
+        } else {
+            currentPlayer = "Player 2";
+            player1Symbol = 'O';
+            player2Symbol = 'X';
+        }
+
+        System.out.println("\nToss Result");
+        System.out.println(currentPlayer + " starts first.");
+
+        System.out.println("Player 1 Symbol : " + player1Symbol);
+        System.out.println("Player 2 Symbol : " + player2Symbol);
     }
 }
