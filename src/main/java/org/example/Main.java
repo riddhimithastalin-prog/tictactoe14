@@ -22,17 +22,32 @@ public class Main {
     // UC5 - Validate User Move
     public static boolean isValidMove(char[][] board, int row, int column) {
 
-        // Check boundaries
         if (row < 0 || row > 2 || column < 0 || column > 2) {
             return false;
         }
 
-        // Check if the cell is empty
         if (board[row][column] != '-') {
             return false;
         }
 
         return true;
+    }
+
+    // UC6 - Place Move on Board
+    public static void placeMove(char[][] board, int row, int column, char symbol) {
+        board[row][column] = symbol;
+    }
+
+    // Display Board
+    public static void printBoard(char[][] board) {
+        System.out.println("\nUpdated Board:");
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
     public static void main(String[] args) {
@@ -46,38 +61,25 @@ public class Main {
             }
         }
 
-        // Display Board
-        System.out.println("Tic-Tac-Toe Board:");
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.print(board[i][j] + " ");
-            }
-            System.out.println();
-        }
+        printBoard(board);
 
         // UC2 - Toss
         Random random = new Random();
         int toss = random.nextInt(2);
 
         String currentPlayer;
-        char player1Symbol;
-        char player2Symbol;
+        char currentSymbol;
 
         if (toss == 0) {
             currentPlayer = "Player 1";
-            player1Symbol = 'X';
-            player2Symbol = 'O';
+            currentSymbol = 'X';
         } else {
             currentPlayer = "Player 2";
-            player1Symbol = 'O';
-            player2Symbol = 'X';
+            currentSymbol = 'X';
         }
 
-        System.out.println("\nToss Result:");
-        System.out.println(currentPlayer + " starts first.");
-        System.out.println("Player 1 Symbol: " + player1Symbol);
-        System.out.println("Player 2 Symbol: " + player2Symbol);
+        System.out.println("\n" + currentPlayer + " starts first.");
+        System.out.println("Current Symbol: " + currentSymbol);
 
         // UC3
         int slot = getUserSlot();
@@ -87,14 +89,18 @@ public class Main {
         int row = position[0];
         int column = position[1];
 
-        System.out.println("Row = " + row);
-        System.out.println("Column = " + column);
-
         // UC5
         if (isValidMove(board, row, column)) {
-            System.out.println("Valid Move");
+
+            // UC6
+            placeMove(board, row, column, currentSymbol);
+
+            System.out.println("\nMove Placed Successfully!");
+
+            printBoard(board);
+
         } else {
-            System.out.println("Invalid Move");
+            System.out.println("Invalid Move!");
         }
     }
 }
