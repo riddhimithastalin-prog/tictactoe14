@@ -5,7 +5,6 @@ public class TicTacToe {
 
     static Scanner scanner = new Scanner(System.in);
 
-    // Main Method
     public static void main(String[] args) {
 
         char[][] board = {
@@ -16,7 +15,7 @@ public class TicTacToe {
 
         printBoard(board);
 
-        // UC8: Continuous Turn-Based Game Loop
+        // UC8 - Continuous Turn-Based Game Loop
         while (true) {
 
             // Player Turn
@@ -51,7 +50,7 @@ public class TicTacToe {
 
     // Player Move
     public static void playerMove(char[][] board) {
-        // Your UC5 code here
+        // Your UC5 code goes here
     }
 
     // Computer Move
@@ -69,6 +68,7 @@ public class TicTacToe {
             int col = position[1];
 
             if (board[row][col] == ' ') {
+
                 board[row][col] = 'O';
                 System.out.println("Computer chose slot " + slot);
                 break;
@@ -76,7 +76,7 @@ public class TicTacToe {
         }
     }
 
-    // Convert slot to row and column
+    // Convert Slot to Row & Column
     public static int[] getRowColumn(int slot) {
 
         int row = (slot - 1) / 3;
@@ -85,14 +85,47 @@ public class TicTacToe {
         return new int[]{row, col};
     }
 
-    // Print Board
-    public static void printBoard(char[][] board) {
-        // Your printBoard() code here
-    }
-
-    // Check Winner
+    // UC9 - Check Winner
     public static boolean checkWinner(char[][] board, char symbol) {
-        // Your UC9 code here
+
+        // Check Rows
+        for (int i = 0; i < 3; i++) {
+
+            if (board[i][0] == symbol &&
+                    board[i][1] == symbol &&
+                    board[i][2] == symbol) {
+
+                return true;
+            }
+        }
+
+        // Check Columns
+        for (int i = 0; i < 3; i++) {
+
+            if (board[0][i] == symbol &&
+                    board[1][i] == symbol &&
+                    board[2][i] == symbol) {
+
+                return true;
+            }
+        }
+
+        // Check Main Diagonal
+        if (board[0][0] == symbol &&
+                board[1][1] == symbol &&
+                board[2][2] == symbol) {
+
+            return true;
+        }
+
+        // Check Anti-Diagonal
+        if (board[0][2] == symbol &&
+                board[1][1] == symbol &&
+                board[2][0] == symbol) {
+
+            return true;
+        }
+
         return false;
     }
 
@@ -100,6 +133,7 @@ public class TicTacToe {
     public static boolean isBoardFull(char[][] board) {
 
         for (int i = 0; i < 3; i++) {
+
             for (int j = 0; j < 3; j++) {
 
                 if (board[i][j] == ' ') {
@@ -109,5 +143,10 @@ public class TicTacToe {
         }
 
         return true;
+    }
+
+    // Print Board
+    public static void printBoard(char[][] board) {
+        // Your printBoard() code goes here
     }
 }
