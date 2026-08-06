@@ -15,7 +15,6 @@ public class TicTacToe {
 
         printBoard(board);
 
-        // UC8 - Continuous Turn-Based Game Loop
         while (true) {
 
             // Player Turn
@@ -50,7 +49,7 @@ public class TicTacToe {
 
     // Player Move
     public static void playerMove(char[][] board) {
-        // Your UC5 code goes here
+        // Your UC5 code here
     }
 
     // Computer Move
@@ -85,10 +84,10 @@ public class TicTacToe {
         return new int[]{row, col};
     }
 
-    // UC9 - Check Winner
+    // Check Winner
     public static boolean checkWinner(char[][] board, char symbol) {
 
-        // Check Rows
+        // Rows
         for (int i = 0; i < 3; i++) {
 
             if (board[i][0] == symbol &&
@@ -99,7 +98,7 @@ public class TicTacToe {
             }
         }
 
-        // Check Columns
+        // Columns
         for (int i = 0; i < 3; i++) {
 
             if (board[0][i] == symbol &&
@@ -110,7 +109,7 @@ public class TicTacToe {
             }
         }
 
-        // Check Main Diagonal
+        // Main Diagonal
         if (board[0][0] == symbol &&
                 board[1][1] == symbol &&
                 board[2][2] == symbol) {
@@ -118,7 +117,7 @@ public class TicTacToe {
             return true;
         }
 
-        // Check Anti-Diagonal
+        // Anti-Diagonal
         if (board[0][2] == symbol &&
                 board[1][1] == symbol &&
                 board[2][0] == symbol) {
@@ -129,7 +128,7 @@ public class TicTacToe {
         return false;
     }
 
-    // Check Draw
+    // UC10 - Detect Draw
     public static boolean isBoardFull(char[][] board) {
 
         for (int i = 0; i < 3; i++) {
@@ -147,6 +146,6 @@ public class TicTacToe {
 
     // Print Board
     public static void printBoard(char[][] board) {
-        // Your printBoard() code goes here
+        // Your printBoard() code here
     }
 }
